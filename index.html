@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的 GitHub Pages 站点</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Markdown 解析库 -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">我的站点</a>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">首页</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">关于</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link">联系</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 主要内容区域 -->
+    <main class="main-content">
+        <div class="container">
+            <h1>欢迎来到我的 GitHub Pages 站点</h1>
+            
+            <div id="markdown-content">
+                <!-- Markdown 内容将通过 JavaScript 动态加载 -->
+            </div>
+
+            <div class="feature-cards">
+                <div class="card">
+                    <h3>🚀 快速部署</h3>
+                    <p>GitHub Pages 提供免费的静态网站托管服务</p>
+                </div>
+                <div class="card">
+                    <h3>📝 Markdown 支持</h3>
+                    <p>原生支持 Markdown 文件渲染</p>
+                </div>
+                <div class="card">
+                    <h3>🌐 自定义域名</h3>
+                    <p>支持绑定自定义域名</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 我的 GitHub Pages 站点. 所有权利保留.</p>
+        </div>
+    </footer>
+
+    <script>
+        // 动态加载 Markdown 内容
+        document.addEventListener('DOMContentLoaded', function() {
+            // 根据当前页面加载对应的 Markdown 文件
+            const path = window.location.pathname;
+            let mdFile = 'README.md';
+            
+            if (path.includes('about')) mdFile = 'about.md';
+            if (path.includes('contact')) mdFile = 'contact.md';
+            
+            // 如果是首页，显示静态内容
+            if (mdFile === 'README.md') {
+                document.getElementById('markdown-content').innerHTML = `
+                    <h2>项目介绍</h2>
+                    <p>这是一个演示如何在 GitHub Pages 上部署静态站点的项目。</p>
+                    <p>本站点包含：</p>
+                    <ul>
+                        <li>响应式导航栏</li>
+                        <li>Markdown 内容支持</li>
+                        <li>移动端适配</li>
+                        <li>GitHub Pages 自动部署</li>
+                    </ul>
+                `;
+                return;
+            }
+            
+            // 加载 Markdown 文件
+            fetch(mdFile)
+                .then(response => response.text())
+                .then(markdown => {
+                    document.getElementById('markdown-content').innerHTML = marked.parse(markdown);
+                })
+                .catch(error => {
+                    document.getElementById('markdown-content').innerHTML = '<p>内容加载失败</p>';
+                });
+        });
+    </script>
+</body>
+</html>
