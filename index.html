@@ -12,21 +12,21 @@
 
 <!-- 轮播图 -->
 <div class="carousel-container">
-    <div class="carousel-slide active" data-link="ketaistudio.html"
+    <div class="carousel-slide active" data-link="./pages/ketaistudio.html"
          style="background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
         <div class="slide-content">
             <h2>凯泰科创工作室</h2>
             <p>创新科技实践平台，培育未来科技精英</p>
         </div>
     </div>
-    <div class="carousel-slide" data-link="youtais310.html"
+    <div class="carousel-slide" data-link="./pages/youtais310.html"
          style="background-image: url('https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
         <div class="slide-content">
             <h2>优泰斯310</h2>
             <p>致力于应急勘测技术研究与应用的专业团队</p>
         </div>
     </div>
-    <div class="carousel-slide" data-link="achievements319.html"
+    <div class="carousel-slide" data-link="./pages/achievements319.html"
          style="background-image: url('https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
         <div class="slide-content">
             <h2>成果展示区319</h2>
@@ -54,15 +54,15 @@
         </p>
 
         <div class="quick-links">
-            <a href="about.html" class="quick-link-card">
+            <a href="./pages/youth-survey-team.html" class="quick-link-card">
                 <h3>南工程青年应急勘测队</h3>
                 <p>专业应急勘测团队，致力于灾害应急响应与技术支持</p>
             </a>
-            <a href="contact.html" class="quick-link-card">
+            <a href="./pages/lab-intro.html" class="quick-link-card">
                 <h3>实验室介绍</h3>
                 <p>先进的实验设备与科研平台，支撑高水平科学研究</p>
             </a>
-            <a href="#" class="quick-link-card">
+            <a href="./pages/blog.html" class="quick-link-card">
                 <h3>博客知识库</h3>
                 <p>实验室日常学习内容分享</p>
             </a>
@@ -147,6 +147,20 @@
         const carouselContainer = document.querySelector('.carousel-container');
         carouselContainer.addEventListener('mouseenter', stopSlideShow);
         carouselContainer.addEventListener('mouseleave', startSlideShow);
+
+        // 轮播图点击跳转功能
+        slides.forEach(slide => {
+            slide.addEventListener('click', function(e) {
+                // 确保点击的不是控制按钮或指示器
+                if (!e.target.classList.contains('carousel-control') &&
+                    !e.target.classList.contains('indicator')) {
+                    const link = this.getAttribute('data-link');
+                    if (link) {
+                        window.location.href = link;
+                    }
+                }
+            });
+        });
 
         // 初始化轮播
         startSlideShow();
