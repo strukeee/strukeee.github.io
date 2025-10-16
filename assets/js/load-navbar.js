@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     // 加载导航栏
-    fetch('../components/navbar.html')
+    const baseUrl = window.location.origin;
+    fetch(`${baseUrl}/components/navbar.html`)
         .then(response => response.text())
         .then(data => {
             document.getElementById('navbar-container').innerHTML = data;
