@@ -1,3 +1,9 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 /* 导航栏样式 */
 .navbar {
     background: linear-gradient(135deg, #1a5fb4 0%, #0d3d7a 100%);
@@ -40,4 +46,5 @@
 
 .nav-link:hover {
     background-color: rgba(255,255,255,0.15);
+
 }
