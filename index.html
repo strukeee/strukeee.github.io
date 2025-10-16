@@ -3,100 +3,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的 GitHub Pages 站点</title>
+    <title>南京工程学院 - 首页</title>
     <link rel="stylesheet" href="assets/css/style.css">
-    <!-- Markdown 解析库 -->
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
-    <!-- 导航栏 -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <a href="index.html">我的站点</a>
-            </div>
-            <ul class="nav-menu">
-                <li class="nav-item">
-                    <a href="index.html" class="nav-link">首页</a>
-                </li>
-                <li class="nav-item">
-                    <a href="about.html" class="nav-link">关于</a>
-                </li>
-                <li class="nav-item">
-                    <a href="contact.html" class="nav-link">联系</a>
-                </li>
-            </ul>
+<!-- 导航栏 -->
+<div id="navbar-container"></div>
+
+<!-- 轮播图 -->
+<div class="carousel-container">
+    <div class="carousel-slide active" data-link="ketaistudio.html"
+         style="background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
+        <div class="slide-content">
+            <h2>凯泰科创工作室</h2>
+            <p>创新科技实践平台，培育未来科技精英</p>
         </div>
-    </nav>
-
-    <!-- 主要内容区域 -->
-    <main class="main-content">
-        <div class="container">
-            <h1>欢迎来到我的 GitHub Pages 站点</h1>
-            
-            <div id="markdown-content">
-                <!-- Markdown 内容将通过 JavaScript 动态加载 -->
-            </div>
-
-            <div class="feature-cards">
-                <div class="card">
-                    <h3>🚀 快速部署</h3>
-                    <p>GitHub Pages 提供免费的静态网站托管服务</p>
-                </div>
-                <div class="card">
-                    <h3>📝 Markdown 支持</h3>
-                    <p>原生支持 Markdown 文件渲染</p>
-                </div>
-                <div class="card">
-                    <h3>🌐 自定义域名</h3>
-                    <p>支持绑定自定义域名</p>
-                </div>
-            </div>
+    </div>
+    <div class="carousel-slide" data-link="youtais310.html"
+         style="background-image: url('https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
+        <div class="slide-content">
+            <h2>优泰斯310</h2>
+            <p>致力于应急勘测技术研究与应用的专业团队</p>
         </div>
-    </main>
-
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2024 我的 GitHub Pages 站点. 所有权利保留.</p>
+    </div>
+    <div class="carousel-slide" data-link="achievements319.html"
+         style="background-image: url('https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
+        <div class="slide-content">
+            <h2>成果展示区319</h2>
+            <p>创新成果荟萃，实践智慧结晶</p>
         </div>
-    </footer>
+    </div>
 
-    <script>
-        // 动态加载 Markdown 内容
-        document.addEventListener('DOMContentLoaded', function() {
-            // 根据当前页面加载对应的 Markdown 文件
-            const path = window.location.pathname;
-            let mdFile = 'README.md';
-            
-            if (path.includes('about')) mdFile = 'about.md';
-            if (path.includes('contact')) mdFile = 'contact.md';
-            
-            // 如果是首页，显示静态内容
-            if (mdFile === 'README.md') {
-                document.getElementById('markdown-content').innerHTML = `
-                    <h2>项目介绍</h2>
-                    <p>这是一个演示如何在 GitHub Pages 上部署静态站点的项目。</p>
-                    <p>本站点包含：</p>
-                    <ul>
-                        <li>响应式导航栏</li>
-                        <li>Markdown 内容支持</li>
-                        <li>移动端适配</li>
-                        <li>GitHub Pages 自动部署</li>
-                    </ul>
-                `;
-                return;
-            }
-            
-            // 加载 Markdown 文件
-            fetch(mdFile)
-                .then(response => response.text())
-                .then(markdown => {
-                    document.getElementById('markdown-content').innerHTML = marked.parse(markdown);
-                })
-                .catch(error => {
-                    document.getElementById('markdown-content').innerHTML = '<p>内容加载失败</p>';
-                });
+    <button class="carousel-control prev">&#10094;</button>
+    <button class="carousel-control next">&#10095;</button>
+
+    <div class="carousel-indicators">
+        <span class="indicator active"></span>
+        <span class="indicator"></span>
+        <span class="indicator"></span>
+    </div>
+</div>
+
+<!-- 主要内容区域 -->
+<main class="main-content">
+    <div class="container">
+        <h2 class="section-title">欢迎来到南京工程学院</h2>
+        <p class="intro-text">
+            南京工程学院是一所以工为主，工学、经济学、管理学、文学、理学、法学等多学科协调发展的江苏省属普通本科高校。
+            学校坚持"学以致用"的办学理念，致力于培养高素质应用型人才，服务地方经济社会发展。
+        </p>
+
+        <div class="quick-links">
+            <a href="about.html" class="quick-link-card">
+                <h3>南工程青年应急勘测队</h3>
+                <p>专业应急勘测团队，致力于灾害应急响应与技术支持</p>
+            </a>
+            <a href="contact.html" class="quick-link-card">
+                <h3>实验室介绍</h3>
+                <p>先进的实验设备与科研平台，支撑高水平科学研究</p>
+            </a>
+            <a href="#" class="quick-link-card">
+                <h3>博客知识库</h3>
+                <p>实验室日常学习内容分享</p>
+            </a>
+        </div>
+    </div>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <p>&copy; 2024 南京工程学院青年应急勘测队 站点. 所有权利保留.</p>
+        <p>地址：江苏省南京市江宁科学园弘景大道1号 | 电话：025-86118000</p>
+    </div>
+</footer>
+
+<!-- 加载导航栏的脚本 -->
+<script src="assets/js/load-navbar.js"></script>
+
+<script>
+    // 轮播图功能
+    document.addEventListener('DOMContentLoaded', function () {
+        const slides = document.querySelectorAll('.carousel-slide');
+        const indicators = document.querySelectorAll('.indicator');
+        const prevBtn = document.querySelector('.carousel-control.prev');
+        const nextBtn = document.querySelector('.carousel-control.next');
+        let currentSlide = 0;
+        let slideInterval;
+
+        // 切换到指定幻灯片
+        function goToSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            indicators[currentSlide].classList.remove('active');
+
+            currentSlide = (n + slides.length) % slides.length;
+
+            slides[currentSlide].classList.add('active');
+            indicators[currentSlide].classList.add('active');
+        }
+
+        // 下一张幻灯片
+        function nextSlide() {
+            goToSlide(currentSlide + 1);
+        }
+
+        // 上一张幻灯片
+        function prevSlide() {
+            goToSlide(currentSlide - 1);
+        }
+
+        // 开始自动轮播
+        function startSlideShow() {
+            slideInterval = setInterval(nextSlide, 5000);
+        }
+
+        // 停止自动轮播
+        function stopSlideShow() {
+            clearInterval(slideInterval);
+        }
+
+        // 事件监听
+        nextBtn.addEventListener('click', function () {
+            stopSlideShow();
+            nextSlide();
+            startSlideShow();
         });
-    </script>
+
+        prevBtn.addEventListener('click', function () {
+            stopSlideShow();
+            prevSlide();
+            startSlideShow();
+        });
+
+        // 指示器点击事件
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', function () {
+                stopSlideShow();
+                goToSlide(index);
+                startSlideShow();
+            });
+        });
+
+        // 鼠标悬停时暂停轮播
+        const carouselContainer = document.querySelector('.carousel-container');
+        carouselContainer.addEventListener('mouseenter', stopSlideShow);
+        carouselContainer.addEventListener('mouseleave', startSlideShow);
+
+        // 初始化轮播
+        startSlideShow();
+    });
+</script>
 </body>
 </html>
