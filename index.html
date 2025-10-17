@@ -151,9 +151,8 @@
         // 轮播图点击跳转功能
         slides.forEach(slide => {
             slide.addEventListener('click', function(e) {
-                // 确保点击的不是控制按钮或指示器
-                if (!e.target.classList.contains('carousel-control') &&
-                    !e.target.classList.contains('indicator')) {
+                // 确保点击的是当前激活的幻灯片
+                if (this.classList.contains('active')) {
                     const link = this.getAttribute('data-link');
                     if (link) {
                         window.location.href = link;

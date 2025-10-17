@@ -116,6 +116,10 @@ body {
     background: white;
 }
 
+.carousel-slide:not(.active) {
+    pointer-events: none;
+}
+
 /* 主要内容区域 */
 .main-content {
     padding: 3rem 0;
