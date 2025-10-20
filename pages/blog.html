@@ -3,10 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <title>博客知识库</title>
+    <style>
+        /* 添加一些基本样式 */
+        .blog-section {
+            margin: 20px;
+            text-align: center;
+        }
+        .blog-image {
+            max-width: 300px;
+            height: auto;
+            margin-bottom: 15px;
+            border-radius: 8px;
+        }
+        .blog-link {
+            display: block;
+            font-size: 18px;
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .blog-link:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
 <!-- 导航栏 -->
 <div id="navbar-container"></div>
+
+<!-- 博客内容区域 -->
+<div class="blog-section">
+    <!-- 博客图片 -->
+    <img src="../assets/images/atlas.png"></img>
+    
+    <!-- 博客链接 -->
+    <a href="https://teacher.njit.edu.cn/zhengxiangtian/zh_CN/" class="blog-link">教师博客</a>
+</div>
 
 <!-- 加载导航栏的脚本 -->
 <script src="../assets/js/load-navbar.js"></script>
