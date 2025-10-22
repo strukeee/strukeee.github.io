@@ -2,9 +2,48 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>大数据学习路线图</title>
+    <!-- 引入GitHub的Markdown样式 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css/github-markdown.min.css">
+    <style>
+        .markdown-body {
+            box-sizing: border-box;
+            min-width: 200px;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 30px;
+        }
+        @media (max-width: 767px) {
+            .markdown-body {
+                padding: 15px;
+            }
+        }
+    </style>
 </head>
 <body>
-大数据学习路线图
+<!-- 导航栏 -->
+<div id="navbar-container"></div>
+
+<!-- Markdown内容容器 -->
+<div id="markdown-container" class="markdown-body"></div>
+
+<!-- 加载导航栏的脚本 -->
+<script src="/assets/js/load-navbar.js"></script>
+
+<!-- 引入Markdown解析库 -->
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+<script>
+    // 从Markdown文件加载内容
+    fetch('/assets/md/bigdataroadmap.md')
+        .then(response => response.text())
+        .then(text => {
+            // 使用marked库解析Markdown并渲染到页面
+            document.getElementById('markdown-container').innerHTML = marked(text);
+        })
+        .catch(error => {
+            console.error('Error loading the Markdown file:', error);
+        });
+</script>
 </body>
 </html>
