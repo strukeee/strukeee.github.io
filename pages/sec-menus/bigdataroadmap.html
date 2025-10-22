@@ -1,22 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>大数据学习路线图</title>
     <!-- 引入GitHub的Markdown样式 -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css/github-markdown.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.2.0/github-markdown.min.css">
     <style>
         .markdown-body {
             box-sizing: border-box;
             min-width: 200px;
             max-width: 980px;
             margin: 0 auto;
-            padding: 30px;
+            padding: 45px;
         }
+
         @media (max-width: 767px) {
             .markdown-body {
                 padding: 15px;
             }
+        }
+
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+        }
+
+        .error {
+            color: #d73a49;
+            padding: 15px;
+            background-color: #ffebee;
+            border-radius: 4px;
+            margin: 20px 0;
         }
     </style>
 </head>
@@ -24,67 +40,24 @@
 <!-- 导航栏 -->
 <div id="navbar-container"></div>
 
-<!-- Markdown内容容器 -->
-<div id="markdown-container" class="markdown-body"></div>
+<div id="markdown-container" class="markdown-body">
+    <div class="loading">正在加载内容...</div>
+</div>
 
-<!-- 引入Markdown解析库 -->
+<!-- 引入marked库 -->
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<!-- 引入Markdown加载器组件 -->
+<script src="/assets/js/markdown-loader.js"></script>
+<!-- 加载导航栏的脚本 -->
+<script src="/assets/js/load-navbar.js"></script>
 
 <script>
+    // 页面加载完成后自动加载Markdown内容
     document.addEventListener('DOMContentLoaded', function() {
-        // 等待 marked 库完全加载
-        if (typeof marked !== 'undefined') {
-            loadContent();
-        } else {
-            // 如果 marked 未定义，等待一段时间重试
-            setTimeout(function() {
-                if (typeof marked !== 'undefined') {
-                    loadContent();
-                } else {
-                    console.error('marked library failed to load');
-                    // 降级方案：显示原始 Markdown 文本
-                    fetch('/assets/md/bigdataroadmap.md')
-                        .then(response => response.text())
-                        .then(text => {
-                            document.getElementById('markdown-container').textContent = text;
-                        });
-                }
-            }, 1000);
-        }
+        MarkdownLoader.load('/assets/md/bigdataroadmap.md');
     });
-
-    function loadContent() {
-        // 从Markdown文件加载内容
-        fetch('/assets/md/bigdataroadmap.md')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.text();
-            })
-            .then(text => {
-                // 使用marked库解析Markdown
-                try {
-                    document.getElementById('markdown-container').innerHTML = marked.parse(text);
-                } catch (error) {
-                    console.error('Error parsing Markdown:', error);
-                    // 降级显示原始文本
-                    document.getElementById('markdown-container').textContent = text;
-                }
-            })
-            .catch(error => {
-                console.error('Error loading the Markdown file:', error);
-                document.getElementById('markdown-container').innerHTML =
-                    '<p>Error loading content. Please try again later.</p>';
-            });
-    }
-
-    // 延迟加载导航栏脚本
-    setTimeout(function() {
-        var script = document.createElement('script');
-        script.src = '/assets/js/load-navbar.js';
-        document.head.appendChild(script);
-    }, 100);
 </script>
+
+
 </body>
 </html>
