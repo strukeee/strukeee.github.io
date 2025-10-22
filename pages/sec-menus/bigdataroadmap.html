@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>大数据学习路线图</title>
     <!-- 引入GitHub的Markdown样式 -->
-    <link rel="stylesheet" href="链接1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css/github-markdown.min.css">
     <style>
         .markdown-body {
             box-sizing: border-box;
@@ -28,67 +28,67 @@
 <div id="markdown-container" class="markdown-body"></div>
 
 <!-- 引入Markdown解析库 -->
-<script src="链接2"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
 <script>
-// 修复方案：
-// 1. 确保 marked 库正确加载
-// 2. 延迟执行直到所有资源加载完成
+    // 修复方案：
+    // 1. 确保 marked 库正确加载
+    // 2. 延迟执行直到所有资源加载完成
 
-document.addEventListener('DOMContentLoaded', function() {
-    // 等待 marked 库完全加载
-    if (typeof marked !== 'undefined') {
-        loadContent();
-    } else {
-        // 如果 marked 未定义，等待一段时间重试
-        setTimeout(function() {
-            if (typeof marked !== 'undefined') {
-                loadContent();
-            } else {
-                console.error('marked library failed to load');
-                // 降级方案：显示原始 Markdown 文本
-                fetch('/assets/md/bigdataroadmap.md')
-                    .then(response => response.text())
-                    .then(text => {
-                        document.getElementById('markdown-container').textContent = text;
-                    });
-            }
-        }, 1000);
+    document.addEventListener('DOMContentLoaded', function() {
+        // 等待 marked 库完全加载
+        if (typeof marked !== 'undefined') {
+            loadContent();
+        } else {
+            // 如果 marked 未定义，等待一段时间重试
+            setTimeout(function() {
+                if (typeof marked !== 'undefined') {
+                    loadContent();
+                } else {
+                    console.error('marked library failed to load');
+                    // 降级方案：显示原始 Markdown 文本
+                    fetch('/assets/md/bigdataroadmap.md')
+                        .then(response => response.text())
+                        .then(text => {
+                            document.getElementById('markdown-container').textContent = text;
+                        });
+                }
+            }, 1000);
+        }
+    });
+
+    function loadContent() {
+        // 从Markdown文件加载内容
+        fetch('/assets/md/bigdataroadmap.md')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text();
+            })
+            .then(text => {
+                // 使用marked库解析Markdown
+                try {
+                    document.getElementById('markdown-container').innerHTML = marked.parse(text);
+                } catch (error) {
+                    console.error('Error parsing Markdown:', error);
+                    // 降级显示原始文本
+                    document.getElementById('markdown-container').textContent = text;
+                }
+            })
+            .catch(error => {
+                console.error('Error loading the Markdown file:', error);
+                document.getElementById('markdown-container').innerHTML =
+                    '<p>Error loading content. Please try again later.</p>';
+            });
     }
-});
 
-function loadContent() {
-    // 从Markdown文件加载内容
-    fetch('/assets/md/bigdataroadmap.md')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.text();
-        })
-        .then(text => {
-            // 使用marked库解析Markdown
-            try {
-                document.getElementById('markdown-container').innerHTML = marked.parse(text);
-            } catch (error) {
-                console.error('Error parsing Markdown:', error);
-                // 降级显示原始文本
-                document.getElementById('markdown-container').textContent = text;
-            }
-        })
-        .catch(error => {
-            console.error('Error loading the Markdown file:', error);
-            document.getElementById('markdown-container').innerHTML = 
-                '<p>Error loading content. Please try again later.</p>';
-        });
-}
-
-// 延迟加载导航栏脚本
-setTimeout(function() {
-    var script = document.createElement('script');
-    script.src = '/assets/js/load-navbar.js';
-    document.head.appendChild(script);
-}, 100);
+    // 延迟加载导航栏脚本
+    setTimeout(function() {
+        var script = document.createElement('script');
+        script.src = '/assets/js/load-navbar.js';
+        document.head.appendChild(script);
+    }, 100);
 </script>
 </body>
 </html>
