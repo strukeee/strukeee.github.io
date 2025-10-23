@@ -94,77 +94,22 @@
             color: #333;
             line-height: 1.7;
         }
-
-        /* 图片展示样式 */
-        .image-container {
-            width: 100%;
-            margin: 20px 0;
-            text-align: center;
-        }
         
-        .image-placeholder {
-            width: 100%;
-            max-width: 800px;
-            height: 300px;
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            margin: 0 auto;
-            border-radius: 8px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border: 2px dashed #e67e22;
-            position: relative;
-            overflow: hidden;
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .news-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .date {
+                margin-left: 0;
+                margin-top: 5px;
+            }
         }
-        
-        .image-placeholder::before {
-            content: "";
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23f8f9fa"/><path d="M30,30 L70,30 L70,70 L30,70 Z" fill="none" stroke="%23e67e22" stroke-width="2" stroke-dasharray="5,5"/><circle cx="50" cy="40" r="10" fill="%23e67e22" opacity="0.2"/><path d="M35,65 L45,55 L55,65 L65,55" fill="none" stroke="%23e67e22" stroke-width="2"/></svg>') center/contain no-repeat;
-            opacity: 0.3;
-        }
-        
-        .image-text {
-            position: relative;
-            z-index: 1;
-            padding: 20px;
-            background-color: rgba(255, 255, 255, 0.8);
-            border-radius: 4px;
-            max-width: 90%;
-        }
-        
-        .image-caption {
-            margin-top: 15px;
-            font-size: 14px;
-            color: #7f8c8d;
-            font-style: italic;
-        }
-        
-        .image-controls {
-            margin-top: 15px;
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-        }
-        
-        .image-btn {
-            padding: 8px 15px;
-            background-color: #e67e22;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        
-        .image-btn:hover {
-            background-color: #d35400;
-        }
-
     </style>
 </head>
 <body>
