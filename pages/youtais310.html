@@ -1,14 +1,228 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>优泰斯310</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>优泰斯310 - 新闻列表</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #eaeaea;
+        }
+        
+        .news-list {
+            list-style: none;
+        }
+        
+        .news-item {
+            margin-bottom: 15px;
+            padding: 12px 0;
+            border-bottom: 1px dashed #eaeaea;
+            display: flex;
+            align-items: center;
+        }
+        
+        .news-item:last-child {
+            border-bottom: none;
+        }
+        
+        .icon {
+            color: #e67e22;
+            font-weight: bold;
+            margin-right: 10px;
+            font-size: 18px;
+        }
+        
+        .news-link {
+            color: #333;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 16px;
+        }
+        
+        .news-link:hover {
+            color: #e67e22;
+        }
+        
+        .date {
+            color: #7f8c8d;
+            font-size: 14px;
+            margin-left: 15px;
+        }
+        
+        .highlight {
+            background-color: #fff9e6;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 25px 0;
+            border-left: 4px solid #e67e22;
+        }
+        
+        .highlight-title {
+            color: #e67e22;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .highlight-content {
+            color: #333;
+            line-height: 1.7;
+        }
+
+        /* 图片展示样式 */
+        .image-container {
+            width: 100%;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .image-placeholder {
+            width: 100%;
+            max-width: 800px;
+            height: 300px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            margin: 0 auto;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 2px dashed #e67e22;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .image-placeholder::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23f8f9fa"/><path d="M30,30 L70,30 L70,70 L30,70 Z" fill="none" stroke="%23e67e22" stroke-width="2" stroke-dasharray="5,5"/><circle cx="50" cy="40" r="10" fill="%23e67e22" opacity="0.2"/><path d="M35,65 L45,55 L55,65 L65,55" fill="none" stroke="%23e67e22" stroke-width="2"/></svg>') center/contain no-repeat;
+            opacity: 0.3;
+        }
+        
+        .image-text {
+            position: relative;
+            z-index: 1;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 4px;
+            max-width: 90%;
+        }
+        
+        .image-caption {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+        
+        .image-controls {
+            margin-top: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .image-btn {
+            padding: 8px 15px;
+            background-color: #e67e22;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .image-btn:hover {
+            background-color: #d35400;
+        }
+
+    </style>
 </head>
 <body>
-<!-- 导航栏 -->
-<div id="navbar-container"></div>
+    <!-- 导航栏 -->
+    <div id="navbar-container"></div>
+    <!-- 加载导航栏的脚本 -->
+    <script src="../assets/js/load-navbar.js"></script>
 
-<!-- 加载导航栏的脚本 -->
-<script src="../assets/js/load-navbar.js"></script>
+    <div class="container">
+        <h1>优泰斯310</h1>
+        
+        <div class="highlight">
+            <div class="highlight-title">最新动态</div>
+            <div class="carousel-slide active" style="background-image: url('../assets/images/101.jpg');"></div>
+        </div>
+        
+        <ul class="news-list">
+            <li class="news-item">
+                <span class="icon">»</span>
+                <a href="#" class="news-link">课题组季辰老师和郑翔天老师前往徽光智能陆海安全决策技术教育部重点实验室宣城分中心交流低空经济安全感知算法</a>
+                <span class="date">2024-06-15</span>
+            </li>
+            <li class="news-item">
+                <span class="icon">»</span>
+                <a href="#" class="news-link">优泰斯310课题组在低空经济安全感知领域取得重要突破</a>
+                <span class="date">2024-05-28</span>
+            </li>
+            <li class="news-item">
+                <span class="icon">»</span>
+                <a href="#" class="news-link">课题组与宣城分中心合作项目启动会顺利召开</a>
+                <span class="date">2024-04-10</span>
+            </li>
+            <li class="news-item">
+                <span class="icon">»</span>
+                <a href="#" class="news-link">低空经济安全感知算法研究进展汇报</a>
+                <span class="date">2024-03-22</span>
+            </li>
+            <li class="news-item">
+                <span class="icon">»</span>
+                <a href="#" class="news-link">陆海安全决策技术教育部重点实验室开放日活动</a>
+                <span class="date">2024-02-15</span>
+            </li>
+            <li class="news-item">
+                <span class="icon">»</span>
+                <a href="#" class="news-link">优泰斯310课题组荣获科技创新团队奖</a>
+                <span class="date">2024-01-08</span>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        // 为新闻链接添加点击事件
+        document.querySelectorAll('.news-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    alert('您点击了: ' + this.textContent);
+                });
+            });
+    </script>
 </body>
 </html>
